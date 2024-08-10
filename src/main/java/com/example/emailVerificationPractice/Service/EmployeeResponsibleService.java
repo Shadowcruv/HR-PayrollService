@@ -69,7 +69,6 @@ public class EmployeeResponsibleService {
         idList = employeeRepository.findAll().stream()
                 .map(Employee::getId).collect(Collectors.toList()); //TODO: finish this method when you come back
         cache.put("id",idList);
-
         return idList;
     }
 
