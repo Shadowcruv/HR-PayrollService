@@ -69,6 +69,7 @@ public class EmployeeResponsibleService {
         idList = employeeRepository.findAll().stream()
                 .map(Employee::getId).collect(Collectors.toList()); //TODO: finish this method when you come back
         cache.put("id",idList);
+
         return idList;
     }
 
@@ -136,9 +137,9 @@ public class EmployeeResponsibleService {
 
     @CacheEvict(cacheNames = {"employees", "employeeList"},allEntries = true)
     public String deleteEmployee(Long id) throws BadRequestException {
-            Optional<Employee> optional = employeeRepository.findById(id);
-            if(optional.isPresent()){
-                employeeRepository.delete(optional.get());
+            boolean result = employeeRepository.existsById(id);
+            if(result){
+                employeeRepository.deleteById(id);
                 return "Deleted successfully";
             }else{
                 throw new BadRequestException("Employee doesn't exist");
