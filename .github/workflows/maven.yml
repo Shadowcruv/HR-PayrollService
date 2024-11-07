@@ -39,5 +39,8 @@ jobs:
     - name: Build Docker image
       run: docker build -t shadowcruv/empapp:${{ github.sha }} .
 
+    - name: list docker images
+      run: docker images
+
     - name: Push Docker image
       run: docker push shadowcruv/votingsystem:${{ github.sha }}
