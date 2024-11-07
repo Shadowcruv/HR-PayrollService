@@ -37,7 +37,7 @@ jobs:
         password: ${{secrets.DOCKERHUB_TOKEN}}
 
     - name: Build Docker image
-      run: docker build -t shadowcruv/votingsystem:${{ github-sha }} .
+      run: docker build -t shadowcruv/votingsystem:${{ github.sha }} .
 
     - name: Push Docker image
       run: docker push shadowcruv/votingsystem:${{ github.sha }} .
