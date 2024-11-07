@@ -40,4 +40,4 @@ jobs:
       run: docker build -t shadowcruv/empapp:${{ github.sha }} .
 
     - name: Push Docker image
-      run: docker push shadowcruv/votingsystem:${{ github.sha }} .
+      run: docker push shadowcruv/votingsystem:${{ github.sha }}
