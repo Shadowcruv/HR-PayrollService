@@ -25,8 +25,8 @@
 # Stage 2: Run application with JRE (lighter for runtime)
 FROM eclipse-temurin:17.0.4_8-jre-alpine
 WORKDIR /app
-ARG JAR_FILE=/app/target/ChallengeTwo-0.0.1-SNAPSHOT.jar
-COPY --from=maven_build ${JAR_FILE} app.jar
+ARG JAR_FILE=target/ChallengeTwo-0.0.1-SNAPSHOT.jar
+COPY ${JAR_FILE} app.jar
 
 EXPOSE 8083
 CMD ["java", "-jar", "app.jar"]
